@@ -8,9 +8,10 @@ public class Main {
         list.addFirst(20);
         list.addFirst(30);
         list.addFirst(40);
-        list.addLast(50);
-        list.addFirst(0);
-        list.addLast(60);
+
+        System.out.println(list.indexOf(30));
+        System.out.println(list.contains(20));
+        list.printList();
         System.out.println("Done!!");
     }
 }
