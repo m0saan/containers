@@ -2,16 +2,15 @@ package com.moboustt;
 
 public class Main {
     public static void main(String[] args) {
-        var Array = new Array(10);
-        Array.insert(1);
-        Array.insert(3);
-        Array.insert(5);
-        Array.insert(4);
-        Array.insert(9);
-        Array.insert(13);
-        Array.insert(7);
+        var list = new LinkedList();
 
-        Array.insertAt(99, 2);
-        Array.print();
+        list.addFirst(10);
+        list.addFirst(20);
+        list.addFirst(30);
+        list.addFirst(40);
+        list.addLast(50);
+        list.addFirst(0);
+        list.addLast(60);
+        System.out.println("Done!!");
     }
 }
