@@ -75,21 +75,21 @@ public class LinkedList {
         }
         var current = first;
         var prevNode = first;
-        while (first != null){
-            if (first.next.next == null) {
-                prevNode = first;
+        while (current != null){
+            if (current.next.next == null) {
+                prevNode = current;
                 last = prevNode;
                 last.next = null;
             }
-            first = first.next;
+            current = current.next;
         }
-        first = current;
     }
     // printList
     public void printList(){
-        while (first != null) {
-            System.out.println(first.value);
-            first = first.next;
+        var current = first;
+        while (current != null) {
+            System.out.println(current.value);
+            current = current.next;
         }
     }
     private boolean isEmpty() {
