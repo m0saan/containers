@@ -1,5 +1,6 @@
 package com.moboustt;
 
+import java.io.BufferedReader;
 import java.util.NoSuchElementException;
 
 public class LinkedList {
@@ -83,6 +84,15 @@ public class LinkedList {
             }
             current = current.next;
         }
+    }
+    public int size(){
+        var current = first;
+        int size = 0;
+        while (current != null){
+            current = current.next;
+            size++;
+        }
+        return size;
     }
     // printList
     public void printList(){
