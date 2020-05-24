@@ -39,29 +39,52 @@ public class LinkedList {
     }
 
     // contains
-    public boolean contains(int item){
-        while (first != null){
-            if (first.value == item)
-                return true;
-            first = first.next;
-        }
-        return false;
+    public boolean contains(int item) {
+        return indexOf(item) != -1;
     }
 
     // indexOf
     public int indexOf(int item){
-        for (int i = 0; first != null ; i++) {
-            if (first.value == item)
+        var current = first;
+        for (int i = 0; current != null ; i++) {
+            if (current.value == item)
                 return i;
-            first = first.next;
+            current = current.next;
         }
         return -1;
     }
     // deleteFirst
     public void deleteFirst(){
-
+        if (isEmpty())
+            throw new NoSuchElementException();
+        if (first == last){
+            first = last = null;
+            return;
+        }
+        var second = first.next;
+        first.next = null;
+        first = second;
     }
     // deleteLast
+    public void deleteLast(){
+        if (isEmpty())
+            throw new NoSuchElementException();
+        if (last == first){
+            first = last = null;
+            return;
+        }
+        var current = first;
+        var prevNode = first;
+        while (first != null){
+            if (first.next.next == null) {
+                prevNode = first;
+                last = prevNode;
+                last.next = null;
+            }
+            first = first.next;
+        }
+        first = current;
+    }
     // printList
     public void printList(){
         while (first != null) {
