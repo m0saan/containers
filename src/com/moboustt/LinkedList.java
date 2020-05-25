@@ -1,12 +1,11 @@
 package com.moboustt;
 
-import java.io.BufferedReader;
 import java.util.NoSuchElementException;
 
 public class LinkedList {
 
-    private class Node {
-        private int value;
+    private static class Node {
+        private final int value;
         private Node next;
 
         public Node(int value) {

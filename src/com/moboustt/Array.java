@@ -58,8 +58,8 @@ public class Array {
     public void intersect(int[] another){
         // O(n^2)
         for (int i = 0; i < count ; i++) {
-            for (int j = 0; j < another.length ; j++) {
-                if(array[i] == another[j])
+            for (int value : another) {
+                if (array[i] == value)
                     System.out.println(array[i]);
             }
         }
