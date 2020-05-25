@@ -16,7 +16,7 @@ public class LinkedList {
 
     private Node first;
     private Node last;
-    private Node flag;
+    private int size;
 
     // addFirst
     public void addFirst(int item) {
@@ -27,6 +27,7 @@ public class LinkedList {
             node.next = first;
             first = node;
         }
+        size++;
     }
     // addLast
     public void addLast(int item){
@@ -37,6 +38,7 @@ public class LinkedList {
             last.next = node;
             last = node;
         }
+        size++;
     }
 
     // contains
@@ -58,6 +60,7 @@ public class LinkedList {
     public void deleteFirst(){
         if (isEmpty())
             throw new NoSuchElementException();
+        size--;
         if (first == last){
             first = last = null;
             return;
@@ -70,6 +73,7 @@ public class LinkedList {
     public void deleteLast(){
         if (isEmpty())
             throw new NoSuchElementException();
+        size--;
         if (last == first){
             first = last = null;
             return;
@@ -85,17 +89,64 @@ public class LinkedList {
             current = current.next;
         }
     }
+    
     public int size(){
-        var current = first;
-        int size = 0;
-        while (current != null){
-            current = current.next;
-            size++;
-        }
         return size;
     }
-    // printList
-    public void printList(){
+
+    public void reverse(){
+        if (isEmpty()) return;
+        Node previousNode = null;
+        var currentNode = first;
+        var nextNode = first.next;
+        while (currentNode != null){
+            currentNode.next = previousNode;
+            previousNode = currentNode;
+            currentNode = nextNode;
+            if (nextNode != null)
+                nextNode = nextNode.next;
+        }
+
+        last = first;
+        first = previousNode;
+    }
+
+    public int getKthFromTheEnd1(int k){
+        if (k <= 0 || isEmpty()) return -1;
+        int flag = size - k;
+        while (flag > 0){
+            first = first.next;
+            flag--;
+        }
+        return first.value;
+    }
+
+    public int getKthFromTheEnd2(int k){
+        if (isEmpty() || k <= 0) return -1;
+        var firstRef = first;
+        var secondRef = first;
+        int flag = 0;
+        while (firstRef != null){
+            if (flag > k-1)
+                secondRef = secondRef.next;
+            firstRef = firstRef.next;
+            flag++;
+        }
+        return secondRef.value;
+    }
+
+    public int[] toArray(){
+        var current = first;
+        int[] arrayInts = new int[size];
+        int index = 0;
+        while (current != null){
+            arrayInts[index] = current.value;
+            current = current.next;
+            index++;
+        }
+        return arrayInts;
+    }
+    public void printList( ){
         var current = first;
         while (current != null) {
             System.out.println(current.value);

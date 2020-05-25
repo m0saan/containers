@@ -1,16 +1,12 @@
 package com.moboustt;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
         var list = new LinkedList();
-        list.addFirst(10);
-        list.addFirst(20);
-        list.addFirst(30);
-        list.addFirst(40);
-        list.deleteLast();
-        list.deleteLast();
-        list.deleteLast();
-        //list.printList();
-        System.out.println("Done!");
+
+        System.out.println(list.getKthFromTheEnd1(3));
+        System.out.println(list.getKthFromTheEnd2(3));
     }
 }
