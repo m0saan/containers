@@ -1,5 +1,6 @@
 package com.moboustt;
 
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 public class LinkedList {
@@ -68,6 +69,22 @@ public class LinkedList {
         first.next = null;
         first = second;
     }
+
+    public int popFirst(){
+        if (isEmpty()) throw new NoSuchElementException();
+        size--;
+        int ret;
+        if (first == last){
+            ret = first.value;
+            first = last = null;
+            return ret;
+        }
+        var second = first.next;
+        ret = first.value;
+        first.next = null;
+        first = second;
+        return ret;
+    }
     // deleteLast
     public void deleteLast(){
         if (isEmpty())
@@ -88,7 +105,33 @@ public class LinkedList {
             current = current.next;
         }
     }
-    
+
+    // hasLoop()
+    // O(n)
+    // [1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8]
+    //                 *                   *
+    public boolean hasLoop(){
+        var slow = first;
+        var fast = first;
+        while (fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if (fast == slow) return true;
+        }
+        return false;
+    }
+
+    public void createFloydCycle(int l){
+        var current = first;
+        var referee = first;
+        while (current != null){
+            if (l == 0) referee = current;
+            current = current.next;
+            l--;
+        }
+        last.next = referee;
+    }
+
     public int size(){
         return size;
     }
@@ -145,14 +188,20 @@ public class LinkedList {
         }
         return arrayInts;
     }
-    public void printList( ){
+    public ArrayList<Integer> printList(){
+        ArrayList<Integer> list = new ArrayList<>();
         var current = first;
         while (current != null) {
-            System.out.println(current.value);
+            list.add(current.value);
             current = current.next;
         }
+        return list;
     }
     private boolean isEmpty() {
         return first == null;
+    }
+
+    public int getFirst() {
+        return first.value;
     }
 }

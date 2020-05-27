@@ -3,7 +3,7 @@ package com.moboustt;
 import java.util.Arrays;
 import java.util.EmptyStackException;
 
-public class Stack {
+public class ArrayStack {
     private int[] items = new int[5];
     private int count = 0;
 
