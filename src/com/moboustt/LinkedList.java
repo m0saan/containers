@@ -177,6 +177,17 @@ public class LinkedList {
         return secondRef.value;
     }
 
+    public boolean isSortedIncreasingly(){
+        var currentNode = first;
+        var nextNode = first.next;
+        while(nextNode != null){
+            if (currentNode.value > nextNode.value) return false;
+            nextNode = nextNode.next;
+            currentNode = currentNode.next;
+        }
+        return true;
+    }
+
     public int[] toArray(){
         var current = first;
         int[] arrayInts = new int[size];

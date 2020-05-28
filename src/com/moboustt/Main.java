@@ -4,15 +4,12 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        var stackList = new LinkedListStack();
-        stackList.push(10);
-        stackList.push(20);
-        stackList.push(30);
-
-        stackList.pop();
-        System.out.println(stackList.peek());
-        System.out.println(stackList.isEmpty());
-        System.out.println(stackList);
+        var twoStacks = new TwoStacks(10);
+        twoStacks.push1(10);
+        twoStacks.push1(20);
+        twoStacks.push2(100);
+        twoStacks.push2(90);
+        System.out.println(twoStacks);
     }
         public static void aPlusB() {
             Scanner scanner = new Scanner(System.in);

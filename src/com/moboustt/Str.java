@@ -16,9 +16,9 @@ public class Str {
         return reversed.toString();
     }
 
-    public boolean isBalanced(String str){
+    public boolean isBalanced(String s){
         Stack<Character> stack = new Stack<>();
-        for (char c: str.toCharArray()) {
+        for (char c: s.toCharArray()) {
             if (isLeft(c))
                 stack.push(c);
 
