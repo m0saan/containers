@@ -208,7 +208,7 @@ public class LinkedList {
         }
         return list;
     }
-    private boolean isEmpty() {
+    public boolean isEmpty() {
         return first == null;
     }
 
