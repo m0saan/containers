@@ -1,9 +1,29 @@
 package com.moboustt;
 
-import java.util.Arrays;
-import java.util.Stack;
+import java.util.*;
 
 public class Str {
+
+    public char findFirstRepeatedCharacter(String s){
+        Set<Character> set = new HashSet<>();
+        for (char c : s.toCharArray()) {
+            if (set.contains(c)) return c;
+            set.add(c);
+        }
+            return Character.MIN_VALUE;
+    }
+
+    public char firstNonRepeatedCharacter(String s){
+        HashMap<Character, Integer> map = new HashMap<>();
+        char[] chars = s.toCharArray();
+
+        for (var ch: chars)
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
+        for (var ch: chars)
+            if (map.get(ch) == 1)
+                return ch;
+            return Character.MIN_VALUE;
+    }
 
     public String strReverse(String str) {
         if (str == null) throw new IllegalArgumentException();

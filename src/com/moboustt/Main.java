@@ -1,20 +1,29 @@
 package com.moboustt;
 
-import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Queue;
 import java.util.Scanner;
 import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
+        var tree = new Tree();
+        tree.insert(7);
+        tree.insert(9);
+        tree.insert(4);
+        tree.insert(1);
+        tree.insert(6);
+        tree.insert(10);
+        tree.insert(8);
 
+        tree.nodesAtKDistance(1);
     }
 
-    public static void reversedQueue(Queue<Integer> queue){
+    public static void reversedQueue(Queue<Integer> queue) {
         Stack<Integer> stack = new Stack<>();
-        while(!queue.isEmpty())
+        while (!queue.isEmpty())
             stack.add(queue.remove());
-        while(!stack.isEmpty())
+        while (!stack.isEmpty())
             queue.add(stack.pop());
     }
 
