@@ -27,11 +27,11 @@ public class AVLTree {
     }
 
     private boolean isLeftHeavy(AVLNode root){
-        return treeHeight(root.leftChild) - treeHeight(root.rightChild) > 1;
+        return getBalanceFactor(root) > 1;
     }
 
     private boolean isRightHeavy(AVLNode root){
-        return treeHeight(root.leftChild) - treeHeight(root.rightChild) < -1;
+        return getBalanceFactor(root) < -1;
     }
 
     private int getBalanceFactor(AVLNode root){
@@ -63,9 +63,7 @@ public class AVLTree {
 
         @Override
         public String toString() {
-            return "AVLNode{" +
-                    "value=" + value +
-                    '}';
+            return "value=" + value;
         }
     }
 
