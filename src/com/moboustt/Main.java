@@ -7,16 +7,16 @@ import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
-        var tree = new Tree();
-        tree.insert(7);
-        tree.insert(9);
-        tree.insert(4);
-        tree.insert(1);
-        tree.insert(6);
+        var tree = new AVLTree();
+        tree.insert(30);
+        tree.insert(20);
         tree.insert(10);
-        tree.insert(8);
+        tree.insert(40);
+        tree.insert(50);
+        tree.insert(60);
+        tree.insert(70);
 
-        tree.nodesAtKDistance(1);
+        System.out.println("Done!");
     }
 
     public static void reversedQueue(Queue<Integer> queue) {
