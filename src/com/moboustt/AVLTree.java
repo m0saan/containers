@@ -2,7 +2,6 @@ package com.moboustt;
 
 public class AVLTree {
     private AVLNode root;
-    //private int balanceFactor;
 
     // insert(int value) -> void
     public void insert(int value) {
@@ -19,12 +18,10 @@ public class AVLTree {
 
         root.height = 1 + Math.max(treeHeight(root.leftChild), treeHeight(root.rightChild));
 
-        var balanceFactor = treeHeight(root.leftChild) - treeHeight(root.rightChild);
+        var balanceFactor = getBalanceFactor(root);
 
-        if (balanceFactor > 1)
-            System.out.println(root.value + " is left heavy");
-        else if (balanceFactor < -1)
-            System.out.println(root.value + " is right heavy");
+        if (isLeftHeavy(root)) System.out.println(root.value + " is left heavy");
+        else if (isRightHeavy(root)) System.out.println(root.value + " is right heavy");
 
         return root;
     }
@@ -37,7 +34,9 @@ public class AVLTree {
         return treeHeight(root.leftChild) - treeHeight(root.rightChild) < -1;
     }
 
-    private int get
+    private int getBalanceFactor(AVLNode root){
+        return treeHeight(root.leftChild) - treeHeight(root.rightChild);
+    }
 
     private int treeHeight(AVLNode root) {
         if (root == null)
