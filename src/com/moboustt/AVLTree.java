@@ -2,6 +2,7 @@ package com.moboustt;
 
 public class AVLTree {
     private AVLNode root;
+    private int size = 0;
 
     // insert(int value) -> void
     public void insert(int value) {
@@ -20,10 +21,62 @@ public class AVLTree {
 
         var balanceFactor = getBalanceFactor(root);
 
-        if (isLeftHeavy(root)) System.out.println(root.value + " is left heavy");
-        else if (isRightHeavy(root)) System.out.println(root.value + " is right heavy");
+        root = balance(root);
+        size++;
 
         return root;
+    }
+
+    public boolean isBalanced(){
+        return isBalance(root);
+    }
+
+    public boolean isPerfect(){
+        return Math.pow(2, treeHeight(root) + 1) - 1 == size;
+    }
+
+    private boolean isBalance(AVLNode root){
+        var left = treeHeight(root.leftChild);
+        var right = treeHeight(root.rightChild);
+
+        var height = left - right;
+        return height <= 1 && height >= -1;
+    }
+
+    private AVLNode balance(AVLNode root) {
+        if (isLeftHeavy(root)) {
+            if (getBalanceFactor(root.leftChild) < 0)
+                root.leftChild = rotateLeft(root.leftChild);
+            return rotateRight(root);
+        }
+        else if (isRightHeavy(root)) {
+            if (getBalanceFactor(root.rightChild) > 0)
+                root.rightChild = rotateRight(root.rightChild);
+            return rotateLeft(root);
+        }
+        return root;
+    }
+
+    private AVLNode rotateLeft(AVLNode root){
+        var newRoot = root.rightChild;
+        root.rightChild = newRoot.leftChild;
+        newRoot.leftChild = root;
+
+        root.height = 1 + Math.max(treeHeight(newRoot.leftChild), treeHeight(newRoot.rightChild));
+        root.height = 1 + Math.max(treeHeight(root.leftChild), treeHeight(root.rightChild));
+
+        return newRoot;
+    }
+
+    private AVLNode rotateRight(AVLNode root){
+        var newRoot = root.rightChild;
+        root.leftChild = newRoot.rightChild;
+        newRoot.rightChild = root;
+
+        root.height = 1 + Math.max(treeHeight(root.leftChild), treeHeight(root.rightChild));
+        root.height = 1 + Math.max(treeHeight(newRoot.leftChild), treeHeight(newRoot.rightChild));
+
+        return newRoot;
     }
 
     private boolean isLeftHeavy(AVLNode root){
