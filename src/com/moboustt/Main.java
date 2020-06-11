@@ -2,21 +2,20 @@ package com.moboustt;
 
 public class Main {
     public static void main(String[] args) {
-        var graph = new ClassicGraph(10);
+        var graph = new Graph();
 
-        graph.addNode("Alice");
-        graph.addNode("Bob");
-        graph.addNode("Jho");
-        graph.addNode("Erin");
+        graph.addNode("A");
+        graph.addNode("B");
+        graph.addNode("C");
+        graph.addNode("D");
 
         //----------------------------//
 
-        graph.addEdge("Alice", "Bob");
-        graph.addEdge("Jho", "Bob");
-        graph.addEdge("Jho", "Erin");
+        graph.addEdge("A", "B");
+        graph.addEdge("B", "D");
+        graph.addEdge("D", "C");
+        graph.addEdge("A", "C");
 
-        graph.removeEdge("Alice", "Bob");
-        graph.print();
-        System.out.println("Done");
+        graph.breadthFirstTraverse("A");
     }
 }
